@@ -1,0 +1,44 @@
+{
+  "name": "requisicoes_fortesol",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "module",
+  "scripts": {
+    "start": "PROD=true node ./bin/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cloudant/cloudant": "^4.3.1",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.19.0",
+    "bull": "^3.22.11",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "http-proxy-middleware": "^2.0.0",
+    "influxdb-nodejs": "^3.1.0",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.3",
+    "react-router-dom": "^5.2.0",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "bin": {
+    "requisicoes_fortesol": "server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Esdrassousa/integracao-banco-de-dados-IBM-cloud-com-node-para-geracao-de-graficos-dinamicos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Esdrassousa/integracao-banco-de-dados-IBM-cloud-com-node-para-geracao-de-graficos-dinamicos/issues"
+  },
+  "homepage": "https://github.com/Esdrassousa/integracao-banco-de-dados-IBM-cloud-com-node-para-geracao-de-graficos-dinamicos#readme",
+  "description": ""
+}
