@@ -116,11 +116,9 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         vetor =[]
         horas_minutos = []
         Corrente1 = []
-        Corrente2 = []
-        Corrente3 = []
         Tensao1 = []
-        Tensao2 = []
-        Tensao3 = []
+        Pot_aparente = []
+        Pot_ativa = []
         FatorPotTotal = []
         for(i=0; i<tamanho ; i++){
            res1 = res[i]['_id'] 
@@ -134,7 +132,9 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
            
 
            resTensao1 = resDados[0].tensao
-           
+           res_pot_aparente = resDados[0].pot_aparente
+           res_pot_ativa = resDados[0].pot_ativa
+           resFatorPotTotal = resDados[0].fp
         
            
            /* resFatorPot1 = parseFloat(resDados[0].pfa)
@@ -171,19 +171,17 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
            }
            
            Corrente1.push(parseFloat(resCorrente1))
-           /* Corrente2.push(parseFloat(resCorrente2))
-           Corrente3.push(parseFloat(resCorrente3)) */
+           
            Tensao1.push(parseFloat(resTensao1))
-           /* Tensao2.push(parseFloat(resTensao2))
-           Tensao3.push(parseFloat(resTensao3))
-           FatorPotTotal.push(resFatorPotTotal) */
-           //////TRIFASICO
+           Pot_aparente.push(parseFloat(res_pot_aparente))
+           Pot_ativa.push(parseFloat(res_pot_ativa))
+           FatorPotTotal.push(parseFloat(resFatorPotTotal))
            //vetor.push([horas_minutos,parseFloat(resCorrente1),parseFloat(resCorrente2),parseFloat(resCorrente3)])
            
-           console.log(Corrente1)
+           console.log(Pot_aparente)
         }
  //console.log(vetor.slice(0,10))
-        await vetor.push([horas_minutos],[Corrente1],[Tensao1])
+        await vetor.push([horas_minutos],[Corrente1],[Tensao1],[Pot_aparente],[Pot_ativa],[FatorPotTotal])
         /* await vetor.push([horas_minutos],[Corrente1],[Corrente2],[Corrente3],
                             [Tensao1],[Tensao2],[Tensao3],
                             [resFatorPot1],[resFatorPot2],[resFatorPot3],
