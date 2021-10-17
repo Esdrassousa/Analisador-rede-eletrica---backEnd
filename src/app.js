@@ -15,13 +15,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const create = index.delete       ('/a' , (req, res, next) =>{
     res.status(201).send(req.body)
 })
-/* const put = router.put('/' , (req, res, next) =>{
-    const id = req.params.id;
-    res.status(200).send({
-        id:id,
-        item: req.body
-    })
-}) */
+
 
 
 module.exports = app
