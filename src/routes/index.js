@@ -11,6 +11,62 @@ var jsonParser = express.json()
 const Queue = new Bull("Queue", { redis: { port: 6379, host: "redis" } });
 const myFirstQueue = new Bull('my-first-queue');
 
+//////////////MQTT
+const mqtt = require('mqtt')
+
+const host = 'e0e240c0.us-east-1.emqx.cloud'
+const port = 15496
+const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
+
+const connectUrl = `mqtt://${host}:${port}`
+
+
+
+//////////////////////
+global.client = mqtt.connect(connectUrl, {
+    clientId,
+    clean: true,
+    connectTimeout: 4000,
+    username: 'admin',
+    password: 'admin',
+    reconnectPeriod: 1000,
+  })
+
+const liga = (router.post('/mqtt/liga', jsonParser ,async(request, response) =>{
+   console.log("liga")
+   
+      const topic = 'teste'
+ 
+      global.client.publish(topic, '1', { qos: 0, retain: false }, (error) => {
+          if (error) {
+            console.error(error)
+          }
+        })
+     
+  
+        global.client.on('1', (topic, payload) => {
+        console.log('Received Message:', topic, payload.toString())
+      })
+
+
+}))
+
+const desliga = (router.post('/mqtt/desliga', jsonParser ,async(requeste, response) =>{
+
+    
+      
+      const topic = 'teste'
+      global.client.publish(topic, '0', { qos: 0, retain: false }, (error) => {
+        if (error) {
+          console.error(error)
+        }
+      })
+      global.client.on('0', (topic, payload) => {
+        console.log('Received Message:', topic, payload.toString())
+      })
+
+}))
+
 
 const route = (router.post('/', jsonParser ,  async (request,response) =>{
     //const myFirstQueue = new Bull('my-first-queue');
@@ -29,6 +85,10 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
                 }
             }
         })
+
+
+
+
         //let allbd = await cloudant.db.list();
         //console.log(`${allbd}`)
 
