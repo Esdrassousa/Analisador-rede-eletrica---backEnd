@@ -73,7 +73,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
     //Queue.add({...request.body})
     const {minutes_recebidos}  = request.body
     var minutes_recebidos_int = parseInt(minutes_recebidos)
-    console.log(minutes_recebidos_int)
+    console.log('minuto recebido: ',minutes_recebidos_int)
     
     try{
         const cloudant = Cloudant({
@@ -167,11 +167,11 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         //res =  await db.find({ selector : {_id: { $gt: '6/23/2021, 14:07:00' , $lt: '6/23/2021, 15:57:00' } }})   
         
         
-        console.log(res)
+        //console.log(res)
         res = res['docs']
         
         tamanho = res.length
-        console.log(res)
+        //console.log(res)
         //vetor =[['', 'corrente a', 'corrente b', 'corrente c']]
         vetor =[]
         horas_minutos = []

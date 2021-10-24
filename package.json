@@ -4,7 +4,7 @@
   "main": "index.js",
   "module": "module",
   "scripts": {
-    "start": "node ./bin/server.js"
+    "start": "PROD=true node ./bin/server.js"
    
     
   },
