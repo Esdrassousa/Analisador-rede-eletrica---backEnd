@@ -238,7 +238,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
            FatorPotTotal.push(parseFloat(resFatorPotTotal))
            //vetor.push([horas_minutos,parseFloat(resCorrente1),parseFloat(resCorrente2),parseFloat(resCorrente3)])
            
-           console.log(Pot_aparente)
+           //console.log(Pot_aparente)
         }
  //console.log(vetor.slice(0,10))
         await vetor.push([horas_minutos],[Corrente1],[Tensao1],[Pot_aparente],[Pot_ativa],[FatorPotTotal])
