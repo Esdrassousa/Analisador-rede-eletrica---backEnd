@@ -246,7 +246,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
                             [Tensao1],[Tensao2],[Tensao3],
                             [resFatorPot1],[resFatorPot2],[resFatorPot3],
                             [FatorPotTotal]) */
-        response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+        response.setHeader('Access-Control-Allow-Origin', process.env.URL);
         response.setHeader('Access-Control-Allow-Credentials', true);
 
         await response.status(200).send(vetor);
