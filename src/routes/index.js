@@ -3,7 +3,7 @@ require('dotenv').config()
 const router = express.Router();
 const Cloudant = require('@cloudant/cloudant');
 const { all } = require('async');
-const  url  = 'https://apikey-v2-2i7l0qp9wwbw87vpija9mi31o7yennrevo7fd87xpz00:974d78d495165a06f9f8a753ffe33542@42b86470-c6b5-4354-813b-727ba9f47dce-bluemix.cloudantnosqldb.appdomain.cloud';
+const  url_ibm  = 'https://apikey-v2-2i7l0qp9wwbw87vpija9mi31o7yennrevo7fd87xpz00:974d78d495165a06f9f8a753ffe33542@42b86470-c6b5-4354-813b-727ba9f47dce-bluemix.cloudantnosqldb.appdomain.cloud';
 const Bull = require("bull");
 const cors = require('cors');
 const redis = require("redis");
@@ -77,7 +77,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
     
     try{
         const cloudant = Cloudant({
-            url:url,
+            url:url_ibm,
             plugins:{
                 iamauth:{
                     
