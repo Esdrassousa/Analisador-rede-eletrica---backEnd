@@ -4,7 +4,8 @@
   "main": "index.js",
   "module": "module",
   "scripts": {
-    "start": "node ./bin/server.js"
+    "start": "PRODE=true node ./bin/server.js"
+    
   },
   "keywords": [],
   "author": "",
