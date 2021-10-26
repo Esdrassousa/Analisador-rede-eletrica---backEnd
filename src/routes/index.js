@@ -102,15 +102,15 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
 
         horas_atual = data.getHours()
         
-        if (horas_atual == 0){
+        if (horas_atual <= 1 && horas_atual > 0){
             horas_atual = 21
         }
 
-        if (horas_atual == 1){
+        if (horas_atual <= 2 && horas_atual > 1){
             horas_atual = 22
         }
 
-        if (horas_atual == 2){
+        if (horas_atual <= 3 && horas_atual > 2){
             horas_atual = 23
         }
         else{
