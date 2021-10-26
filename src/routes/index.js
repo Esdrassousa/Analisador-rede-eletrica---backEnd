@@ -101,17 +101,16 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         ano_atual  = data.getFullYear()
 
         horas_atual = data.getHours()
-        console.log('horas atual: ', horas_atual)
-
-        if (horas_atual == 0){
+        
+        if (horas_atual === 0){
             horas_atual = 21
         }
 
-        if (horas_atual == 01){
+        if (horas_atual == 1){
             horas_atual = 22
         }
 
-        if (horas_atual == 02){
+        if (horas_atual == 2){
             horas_atual = 23
         }
         else{
