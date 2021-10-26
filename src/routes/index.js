@@ -101,6 +101,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         ano_atual  = data.getFullYear()
 
         horas_atual = data.getHours()
+        console.log('horas atual: ', horas_atual)
 
         if (horas_atual == 00){
             horas_atual = 21
@@ -115,7 +116,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         }
         else{
 
-            horas_atual = data.getHours() - 3
+            horas_atual = data.getHours() - 0
         }
         horas_atual = ((horas_atual < 10) ? '0' : '') + horas_atual
         minutes_atual  = data.getMinutes() + 2
@@ -149,8 +150,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         data_completa_atual =  mes_atual + '/' + dia_atual + '/' + ano_atual + ',' + ' ' +  horas_atual + ":" + minutes_atual + ":" +'59'
         data_completa_anterior =  mes_atual + '/' + dia_atual + '/' + ano_atual + ',' + ' ' +  horas_anterior + ":" + minute_anterior + ":" +'00'
 
-        //console.log('data atual: ',(String(data_completa_atual)))
-        //console.log('data anterio : ', (String(data_completa_anterior)))
+
         ////////////////////////////////
         function delay_tempo(segundos){
             var start = new Date().getTime();
@@ -196,35 +196,12 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
            res_pot_ativa = resDados[0].pot_ativa
            resFatorPotTotal = resDados[0].fp
         
-           
-           /* resFatorPot1 = parseFloat(resDados[0].pfa)
-           resFatorPot2 = parseFloat(resDados[0].pfb)
-           resFatorPot3 = parseFloat(resDados[0].pfc)
 
-           resFatorPotTotal = parseFloat(resDados[0].pft)
-           console.log(resCorrente1)
-           if (resFatorPot1 < 0){
-            resFatorPot1 = resFatorPot1*(-1)
-           }
-           if (resFatorPot2 < 0){
-            resFatorPot2 = resFatorPot2*(-1)
-           }
-           if (resFatorPot3 < 0){
-            resFatorPot3 = resFatorPot3*(-1)
-           }
-
-           if (resFatorPotTotal < 0){
-            resFatorPotTotal = resFatorPotTotal*(-1)
-           } */
 
            const splits = resI['data'].split(',')
            const splits2 = splits[1].split(':')
            const res_horas_minutos = splits2[0] + ':' + splits2[1]      
-           //console.log('aqui é: ', resCorrente1)
-           //console.log('a hora é:: ', horas_minutos)
-           //vetor.push([resI['data'],parseFloat(resI['ia'])])
-           ///MONOFASICO
-           //vetor.push([horas_minutos,parseFloat(resI['ia'])])
+
            if (i%2 === 0){horas_minutos.push(null)}else{
             horas_minutos.push(res_horas_minutos)
             
@@ -236,23 +213,17 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
            Pot_aparente.push(parseFloat(res_pot_aparente))
            Pot_ativa.push(parseFloat(res_pot_ativa))
            FatorPotTotal.push(parseFloat(resFatorPotTotal))
-           //vetor.push([horas_minutos,parseFloat(resCorrente1),parseFloat(resCorrente2),parseFloat(resCorrente3)])
-           
-           //console.log(Pot_aparente)
+
         }
- //console.log(vetor.slice(0,10))
+
         await vetor.push([horas_minutos],[Corrente1],[Tensao1],[Pot_aparente],[Pot_ativa],[FatorPotTotal])
-        /* await vetor.push([horas_minutos],[Corrente1],[Corrente2],[Corrente3],
-                            [Tensao1],[Tensao2],[Tensao3],
-                            [resFatorPot1],[resFatorPot2],[resFatorPot3],
-                            [FatorPotTotal]) */
+
         response.setHeader('Access-Control-Allow-Origin', process.env.URL);
         response.setHeader('Access-Control-Allow-Credentials', true);
 
         await response.status(200).send(vetor);
         
-        //console.log(vetor)
-        //console.log(vetor.slice((vetor.length  - 5),(vetor.length)))
+
       
     }catch(err){
         console.log(err);
