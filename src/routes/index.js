@@ -106,11 +106,11 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
             horas_atual = 21
         }
 
-        if (horas_atual == 1){
+        if (horas_atual == 01){
             horas_atual = 22
         }
 
-        if (horas_atual == 2){
+        if (horas_atual == 02){
             horas_atual = 23
         }
         else{
