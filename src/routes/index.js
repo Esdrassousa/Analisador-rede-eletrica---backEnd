@@ -215,7 +215,8 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
 
         }
 
-        await vetor.push([horas_minutos],[Corrente1],[Tensao1],[Pot_aparente],[Pot_ativa],[FatorPotTotal])
+        await vetor.push([horas_minutos],[Corrente1],[Tensao1],
+            [Pot_aparente],[Pot_ativa],[FatorPotTotal],[horas_atual])
 
         response.setHeader('Access-Control-Allow-Origin', process.env.URL);
         response.setHeader('Access-Control-Allow-Credentials', true);
