@@ -104,7 +104,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         
         if (data.getHours() == 0){
             horas_atual = 21
-            dia_atual = dia_atual-1
+            dia_atual = dia_atual-1 
         }
 
         else if (data.getHours() == 1){
@@ -114,7 +114,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
 
         else if (data.getHours() == 2){
             horas_atual = 23
-            dia_atual = dia_atual-1
+            dia_atual = dia_atual-3
         }
         else{
 
@@ -219,7 +219,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
         }
 
         await vetor.push([horas_minutos],[Corrente1],[Tensao1],
-            [Pot_aparente],[Pot_ativa],[horas_atual])
+            [Pot_aparente],[Pot_ativa],[FatorPotTotal])
 
         response.setHeader('Access-Control-Allow-Origin', process.env.URL);
         response.setHeader('Access-Control-Allow-Credentials', true);
