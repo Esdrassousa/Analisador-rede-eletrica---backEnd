@@ -31,9 +31,11 @@ global.client = mqtt.connect(connectUrl, {
     password: 'admin',
     reconnectPeriod: 1000,
   })
+  
+    
 
 const liga = (router.post('/mqtt/liga', jsonParser ,async(request, response) =>{
-   console.log("liga")
+   
    
       const topic = 'teste'
  
@@ -68,9 +70,16 @@ const desliga = (router.post('/mqtt/desliga', jsonParser ,async(requeste, respon
 }))
 
 
+global.client.on('message', async(topic, payload) => {
+    await console.log('Received Message:', topic, payload.toString())
+  })
+
 const route = (router.post('/', jsonParser ,  async (request,response) =>{
-    //const myFirstQueue = new Bull('my-first-queue');
-    //Queue.add({...request.body})
+    
+    global.client.on('message', (topic, payload) => {
+        console.log('Received Message:', topic, payload.toString())
+      })
+    
     const {minutes_recebidos}  = request.body
     var minutes_recebidos_int = parseInt(minutes_recebidos)
     console.log('minuto recebido: ',minutes_recebidos_int)
@@ -114,7 +123,7 @@ const route = (router.post('/', jsonParser ,  async (request,response) =>{
 
         else if (data.getHours() == 2){
             horas_atual = 23
-            dia_atual = dia_atual-3
+            dia_atual = dia_atual-1
         }
         else{
 
