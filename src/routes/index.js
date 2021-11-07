@@ -14,8 +14,8 @@ const myFirstQueue = new Bull('my-first-queue');
 //////////////MQTT
 const mqtt = require('mqtt')
 
-const host = 'e0e240c0.us-east-1.emqx.cloud'
-const port = 15496
+const host = 'td46e9cd.us-east-1.emqx.cloud'
+const port = 15476
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
 
 const connectUrl = `mqtt://${host}:${port}`
